@@ -28,7 +28,7 @@ cp -r etc/example_yaml/myproj ~/.config/myproj
 ### Install from pypy distro
 
 ```bash
-pip install yaml_config_day==0.0.4
+pip install yaml_config_day==0.0.5
 ```
 
 ### Install cloned repo with pip
