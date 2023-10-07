@@ -1,10 +1,11 @@
 import os
+import sys
 import yaml
 
 class ProjectConfigManager:
     def __init__(self, project_name):
         self.project_name = project_name
-        self.config_file_path = os.path.expanduser(f"~/.config/{self.project_name}.yml")
+        self.config_file_path = os.path.expanduser(f"~/.config/{self.project_name}/{self.project_name}.yaml")
 
     def get_config(self):
         """
@@ -36,8 +37,7 @@ class ProjectConfigManager:
         if os.path.exists(self.config_file_path):
             os.remove(self.config_file_path)
 
-def main():
-    project_name = "my_project"
+def main(project_name=None):
     config_manager = ProjectConfigManager(project_name)
 
     while True:
@@ -72,4 +72,8 @@ def main():
             print("Invalid choice. Please select a valid option.")
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 2:
+        raise Exception("The first argument to this script must be a project name from ~/.config")
+    
+    project_name = sys.argv[1]
+    main(project_name)

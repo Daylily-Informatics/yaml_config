@@ -4,6 +4,7 @@ channels:
   - defaults
 dependencies:
   - python=3.10
+  - ipython
   - pip
   - pip:
     - pyyaml==6.0.1
