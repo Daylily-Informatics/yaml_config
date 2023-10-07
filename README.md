@@ -118,3 +118,9 @@ username: userNAME
 # TODO
 * Currently, very simple project+environment yaml files are managed.  Move to something that looks more like [myproj_test.yaml](etc/example_yaml/myproj/myproj_test.yaml).
 
+
+# Notes
+## Push to pypi
+*  Update setup.py
+* `python setup.py sdist bdist_wheel`
+* `twine upload dist/*`
