@@ -1,4 +1,4 @@
-# yaml_config
+# yaml_config_day
 
 
 ## Pre-requisites
@@ -35,7 +35,7 @@ username: jmmmem
 * Use in an ipython shell
 ```python
 
-import yaml_config.config_manager as YCM
+import yaml_config_day.config_manager as YCM
 yconfig = YCM.ProjectConfigManager('jem')
 yconfig.get_config()
 
