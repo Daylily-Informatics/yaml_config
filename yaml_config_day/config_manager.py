@@ -3,9 +3,17 @@ import sys
 import yaml
 
 class ProjectConfigManager:
-    def __init__(self, project_name):
+    def __init__(self, project_name, project_env='prod'):
         self.project_name = project_name
-        self.config_file_path = os.path.expanduser(f"~/.config/{self.project_name}/{self.project_name}.yaml")
+        self.project_env = project_env
+
+        yaml_fn = os.path.expanduser(f"~/.config/{self.project_name}/{self.project_name}_{self.project_env}.yaml")
+        
+        if not os.path.exists(yaml_fn):
+            raise Exception(f"\n\n\nThe expected yaml config file has not been detected in the expected location: {yaml_fn}")
+        
+        self.config_file_path = yaml_fn
+        
 
     def get_config(self):
         """
@@ -25,6 +33,8 @@ class ProjectConfigManager:
             "username": username,
             "access_key": access_key,
             "secret_access_key": secret_access_key,
+            "proj_env" : self.project_env,
+            "project_name" : self.project_name,
         }
 
         with open(self.config_file_path, "w") as file:
@@ -72,8 +82,9 @@ def main(project_name=None):
             print("Invalid choice. Please select a valid option.")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        raise Exception("The first argument to this script must be a project name from ~/.config")
+    if len(sys.argv) != 3:
+        raise Exception("The first argument to this script must be a project_name, with a directory named as such under ~/.config, then the second argument must be the project_environment (ie: prod or sandbox-A), which combined with the project_name, specifies the configuration yaml file to be parsed.  In this case: ~/.config/ARG[1]/ARG[1]_ARG[2].yaml ")
     
     project_name = sys.argv[1]
-    main(project_name)
+    project_env = sys.argv[2]
+    main(project_name, project_env)

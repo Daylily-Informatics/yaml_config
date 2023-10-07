@@ -7,6 +7,16 @@ Slim python library to manage `yaml` configuration files stored in project speci
 * For MAC/Linux systems (though should be straightforward to port to Windows).
 *  Python >= 3.10 & pip
 
+## .config Directory Structure & yaml Files
+
+* You must have a `~/.config` directory.  Under this directory, each `project_name` must have its own directory. Within each `project_name` directory, there must be a yaml file for each `project_environment`. In the following example, the project, `myproj`, has two `project_environment` yaml files `prod` and `develop`. The `project_environment` allows configuration of multiple working environments for each project.  The default asusmend project_environment is `prod`, but any name may be specified.
+
+```bash
+$HOME/.config/myproj/
+                     ├── myproj_develop.yaml
+                     └── myproj_prod.yaml
+```
+
 ### Install from pypy distro
 
 ```bash
@@ -48,7 +58,7 @@ mkdir -p ~/.config/$project
 touch ~/.config/$project/$project.yaml
 ```
 
-* Enter your config key-value pairs via a text editor in the file `~/.congif/myproj/myproj.yaml`.  ie:
+* Enter your config key-value pairs via a text editor in the file `~/.congif/myproj/myproj_prod.yaml`.  ie:
   
 ```bash
 ---
@@ -71,4 +81,4 @@ yconfig.get_config()
 
 # TODO
 * tinker with the command line config creation/editing. For now, only pre-existing `yaml` file querying is tested.
-* allow for more complex `config.yaml` files, as well as handling toggling beteen `prod` and various `dev` configs.... potentiall by appending an `$env` value in between `$project` and `.yaml`, ie: `~/.config/$project/$project_$env.yaml`.
+
