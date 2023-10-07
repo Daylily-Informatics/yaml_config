@@ -24,6 +24,14 @@ mkdir -p ~/.config/$project
 touch ~/.config/$project/$project.yaml
 ```
 
+* Enter your config key-value pairs
+```bash
+---
+access_key: aaa
+secret_access_key: bbbb
+username: jmmmem
+```
+
 * Use in an ipython shell
 ```python
 
@@ -34,3 +42,7 @@ yconfig.get_config()
 # Out: {'access_key': 'aaa', 'secret_access_key': 'bbbb', 'username': 'jmmmem'}
 ```
 
+
+# TODO
+* tinker with the command line config creation/editing. For now, only pre-existing `yaml` file querying is tested.
+* allow for more complex `config.yaml` files, as well as handling toggling beteen `prod` and various `dev` configs.... potentiall by appending an `$env` value in between `$project` and `.yaml`, ie: `~/.config/$project/$project_$env.yaml`.
