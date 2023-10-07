@@ -17,6 +17,14 @@ $HOME/.config/myproj/
                      └── myproj_prod.yaml
 ```
 
+### Seed with example files
+From the cloned yaml_config_day repo top directory.
+
+```bash
+mkdir -p ~/.config
+cp -r etc/example_yaml/myproj ~/.config/myproj
+```
+
 ### Install from pypy distro
 
 ```bash
