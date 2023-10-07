@@ -48,22 +48,24 @@ mkdir -p ~/.config/$project
 touch ~/.config/$project/$project.yaml
 ```
 
-* Enter your config key-value pairs
+* Enter your config key-value pairs via a text editor in the file `~/.congif/myproj/myproj.yaml`.  ie:
+  
 ```bash
 ---
 access_key: aaa
 secret_access_key: bbbb
-username: jmmmem
+username: myusername
 ```
 
-* Use in an ipython shell
+* Use in an python shell to fetch the `~/.config/myproj/myproj.yaml` config data as a `dict`.
+  
 ```python
 
 import yaml_config_day.config_manager as YCM
-yconfig = YCM.ProjectConfigManager('jem')
+yconfig = YCM.ProjectConfigManager('myproj')
 yconfig.get_config()
 
-# Out: {'access_key': 'aaa', 'secret_access_key': 'bbbb', 'username': 'jmmmem'}
+# Out: {'access_key': 'aaa', 'secret_access_key': 'bbbb', 'username': 'myusername'}
 ```
 
 
