@@ -33,8 +33,6 @@ class ProjectConfigManager:
             "username": username,
             "access_key": access_key,
             "secret_access_key": secret_access_key,
-            "proj_env" : self.project_env,
-            "project_name" : self.project_name,
         }
 
         with open(self.config_file_path, "w") as file:

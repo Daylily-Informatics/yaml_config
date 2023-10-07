@@ -80,13 +80,41 @@ username: myusername
 ```python
 
 import yaml_config_day.config_manager as YCM
-yconfig = YCM.ProjectConfigManager('myproj')
+
+# READ CONFIG YAML
+yconfig = YCM.ProjectConfigManager('myproj', 'develop')
+
+# RETURN DICT of YAML CONFIG
 yconfig.get_config()
 
-# Out: {'access_key': 'aaa', 'secret_access_key': 'bbbb', 'username': 'myusername'}
+#  Out[3]: {'access_key': 'aaa', 'secret_access_key': 'bbbb', 'username': 'jmmmem'}
+
+# CLEAR CONFIG
+yconfig.clear_config()
+yconfig.get_config()
+
+# Out[5]: {}
+
+# WRITE NEW YAML (will over-write all values presently, so must specify all)
+yconfig.set_config(username='userNAME',access_key='AccessKey',secret_access_key='SecretAccessKey')
+
+# GET NEW YAML AS DICT
+yconfig.get_config()
+Out[7]: {'access_key': 'AccessKey', 'secret_access_key': 'SecretAccessKey',  'username': 'userNAME'}
+
 ```
 
+And after re-writing the default config.yaml, the `~/.config/myproj/myproj_develop.yaml` file now contains:
+```bash
+cat ~/.config/myproj/myproj_develop.yaml
+```
+
+```text
+access_key: AccessKey
+secret_access_key: SecretAccessKey
+username: userNAME
+```
 
 # TODO
-* tinker with the command line config creation/editing. For now, only pre-existing `yaml` file querying is tested.
+* Currently, very simple project+environment yaml files are managed.  Move to something that looks more like [myproj_test.yaml](etc/example_yaml/myproj/myproj_test.yaml).
 
