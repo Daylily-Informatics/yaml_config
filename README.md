@@ -8,7 +8,7 @@
 ### Install from pypy distro
 
 ```bash
-pip install yaml_config_day
+pip install yaml_config_day==0.0.4
 ```
 
 ### Install cloned repo with pip
