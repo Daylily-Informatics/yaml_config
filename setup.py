@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='yaml_config_day',
-    version='0.0.3',
+    version='0.0.4',
     description='A Python library for managing project yaml secrets configurations',
     author='John Major',
     author_email='john@daylilyinformatics.com',

@@ -3,18 +3,40 @@
 
 ## Pre-requisites
 * For MAC/Linux systems (though should be straightforward to port to Windows).
+*  Python >= 3.10 & pip
+
+### Install from pypy distro
+
+```bash
+pip install yaml_config_day
+```
+
+### Install cloned repo with pip
+
+```bash
+cd $yaml_config_day cloned repo
+pip install .
+```
+
+### Development install from source
+
+###  env for dev
 * [conda/mamba](https://anaconda.org/conda-forge/mamba)
 
-## Create Environment
+#### Create Environment
 
-Using conda/mamba.
+Using mamba.
 
 ```bash
 mamba env create -n DYAML -f DYAML.yaml
 ```
 
 
-## Usage
+#### Usage Fron Cloned Repository
+
+```bash
+conda activate DYAML
+```
 
 * Be sure to have a `project` `~/.config/` subdirectory which contains a `project.yaml` file.
 
