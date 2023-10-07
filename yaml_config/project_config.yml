@@ -1,0 +1,29 @@
+# Example project configuration file
+
+# This section contains project-specific settings
+project:
+  name: My Project
+  version: 1.0
+
+# Credentials for accessing a service
+credentials:
+  username: your_username
+  access_key: your_access_key
+  secret_access_key: your_secret_access_key
+
+# Database configuration
+database:
+  host: localhost
+  port: 5432
+  dbname: mydb
+  username: db_user
+  password: db_password
+
+# API endpoints
+api:
+  endpoint1:
+    url: https://api.example.com/endpoint1
+    token: your_api_token
+  endpoint2:
+    url: https://api.example.com/endpoint2
+    token: another_api_token
