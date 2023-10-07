@@ -1,5 +1,7 @@
 # yaml_config_day
 
+Slim python library to manage `yaml` configuration files stored in project specific subdirectories of `~/.config/`. Command line creation and editing functions beginning to be tinkered with, core usecase presently is programatic access of standardized config.yaml files.
+
 
 ## Pre-requisites
 * For MAC/Linux systems (though should be straightforward to port to Windows).
