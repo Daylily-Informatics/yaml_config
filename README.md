@@ -1,6 +1,6 @@
 # yaml_config_day
 
-Slim python library to manage `yaml` configuration files stored in project specific subdirectories of `~/.config/`. Command line creation and editing functions beginning to be tinkered with, core usecase presently is programatic access of standardized config.yaml files.
+Slim python library to manage `yaml` configuration files stored in project specific subdirectories of `~/.config/`. Command line creation and editing functions beginning to be tinkered with, core usecase presently is programatic access of standardized config.yaml files with very little fuss.
 
 
 ## Pre-requisites
@@ -17,7 +17,7 @@ $HOME/.config/myproj/
                      └── myproj_prod.yaml
 ```
 
-### Seed with example files
+### Seed from the example project config directory and files found in this repo
 From the cloned yaml_config_day repo top directory.
 
 ```bash
@@ -45,7 +45,7 @@ pip install .
 
 #### Create Environment
 
-Using mamba.
+Using mamba (there is very little to this module, a venv may be overkill... but so it goes).
 
 ```bash
 mamba env create -n DYAML -f DYAML.yaml
@@ -58,15 +58,16 @@ mamba env create -n DYAML -f DYAML.yaml
 conda activate DYAML
 ```
 
-* Be sure to have a `project` `~/.config/` subdirectory which contains a `project.yaml` file.
+* For each project you would like to set up distinct config for, create a new folder named for each project under `~/.config/` named for the project. Within this directory, you can create a config file for each develop environment used by this project, files named as follows: 
 
 ```bash
 project='myproj';
+devenv='dev'
 mkdir -p ~/.config/$project
-touch ~/.config/$project/$project.yaml
+touch ~/.config/$project/$project_$devenv.yaml
 ```
 
-* Enter your config key-value pairs via a text editor in the file `~/.congif/myproj/myproj_prod.yaml`.  ie:
+* Enter your config key-value pairs via a text editor in the file `~/.config/myproj_dev.yaml`.  ie:
   
 ```bash
 ---
@@ -75,14 +76,14 @@ secret_access_key: bbbb
 username: myusername
 ```
 
-* Use in an python shell to fetch the `~/.config/myproj/myproj.yaml` config data as a `dict`.
+* Use in an python shell to fetch the `~/.config/myproj/myproj_dev.yaml` config data as a `dict`.
   
 ```python
 
 import yaml_config_day.config_manager as YCM
 
 # READ CONFIG YAML
-yconfig = YCM.ProjectConfigManager('myproj', 'develop')
+yconfig = YCM.ProjectConfigManager('myproj', 'dev')
 
 # RETURN DICT of YAML CONFIG
 yconfig.get_config()
